@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Corrosion Detection</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #74b9ff, #81ecec);
+            color: #2d3436;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+        }
+        .form-container {
+            background: #ffffff;
+            padding: 30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        input[type="file"] {
+            display: block;
+            margin: 15px auto;
+            padding: 10px;
+            border: 2px dashed #74b9ff;
+            border-radius: 5px;
+            background: #f1f2f6;
+            cursor: pointer;
+        }
+        input[type="file"]:hover {
+            border-color: #0984e3;
+        }
+        button {
+            background: #0984e3;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #74b9ff;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 1.5em;
+            color: #d63031;
+        }
+        .no-corrosion {
+            color: #00b894;
+        }
+        a {
+            display: block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #0984e3;
+            font-weight: bold;
+        }
+        a:hover {
+            color: #74b9ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Corrosion Detection</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <input type="file" name="file" required>
+            <button type="submit">Predict</button>
+        </form>
+        {% if result %}
+            <p class="result {{ 'no-corrosion' if result == 'no-Corrosion' else '' }}">
+                Prediction: {{ result }}
+            </p>
+        {% endif %}
+    </div>
+</body>
+</html>
